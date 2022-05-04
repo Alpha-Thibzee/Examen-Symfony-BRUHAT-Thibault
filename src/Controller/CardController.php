@@ -43,11 +43,13 @@ class CardController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-            $avatarFile = $form->get("picture")->getData();
-                $avatarFileName = $fileUploader->upload($avatarFile) ;
-                $card->setPicture($avatarFileName);
+                
             if($card->getPicture() === null) {
                 $card->setPicture("NoAvailable.png");
+            } else {
+                $avatarFile = $form->get("picture")->getData();
+                $avatarFileName = $fileUploader->upload($avatarFile) ;
+                $card->setPicture($avatarFileName);
             }
             $em->persist($card);
             
