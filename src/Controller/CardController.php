@@ -111,7 +111,10 @@ class CardController extends AbstractController
     {
 
         $avatar = $card->getPicture();
-        unlink("assets/card/".$avatar);
+        if($avatar != "NoAvailable.png"){
+            unlink("assets/card/".$avatar);
+        }
+        
         $em->remove($card);
         try {
             $em->flush();
