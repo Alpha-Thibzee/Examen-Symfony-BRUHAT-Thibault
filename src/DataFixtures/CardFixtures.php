@@ -14,7 +14,7 @@ class CardFixtures extends Fixture
             $card = new Card();
             $card->setName("Carte n°".$i);
             $card->setQuantity($i);
-            $card->setValue($i*20);
+            $card->setValue(rand(25,250));
             $card->setPicture($i.".png");
             $card->setBuyAt(new \DateTimeImmutable());
             $card->setReleaseAt(new \DateTimeImmutable());  
