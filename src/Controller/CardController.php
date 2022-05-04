@@ -89,7 +89,7 @@ class CardController extends AbstractController
 
             $avatarFile = $form->get('picture')->getData();
             if ($avatarFile) {
-                if($avatarFile !== 'default.png'){
+                if($avatarFile !== 'NoAvailable.png'){
                     $fileUploader->fileDelete($oldAvatar);
                 }
                 $avatarFileName = $fileUploader->upload($avatarFile);
