@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Une carte{% endblock %}
+
+{% block body %}
+
+<div class="container-fluid d-flex row align-items-center justify-content-center mt-3 mb-3">
+    <div class="card col-3 mx-3 my-3 " style="width: 18rem;">
+    <img src="{{  asset("/assets/card/" ~ card.picture) }}" class="img-top" alt="">
+        <div class="card-body">
+            <h3 class="card-title">{{ card.name }}</h3>
+            <h5>Prix : {{ card.value }}€</h5>
+                <p class="card-text"><h6>Résumé :</h6> {{ card.description }}</p>
+                <p class="card-text">Quantité : {{ card.quantity }}</p>
+                <p class="card-text">Acheté le : {{ card.buyAt|date('d/m/Y') }}</p>
+                <p class="card-text">Sortie le : {{ card.releaseAt|date('d/m/Y') }}</p>
+                
+                {% if card.isOnSale %}
+                <p class="card-text">Disponible à la vente</p>
+                {% else %}
+                <p class="card-text">Indisponible à la vente</p>
+                {% endif %}
+               
+            {% if app.user %}
+            <a href="{{ path('edit-card',{id:card.id}) }}" class="btn btn-warning">Modifer</a>
+            <a href="{{ path('delete-card',{id:card.id}) }}" class="btn btn-danger">Supprimer</a>
+            {% endif %}
+        </div>
+</div>
+</div>
+{% endblock %}

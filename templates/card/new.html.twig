@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une carte{% endblock %}
+
+{% block body %}
+<div class="container w-50">
+{{ form_start(form) }}
+    {{ form_row(form.name, {'attr': {'class': 'form-control'}, 'label': 'Nom de la carte :'}) }}
+    {{ form_row(form.value, {'attr': {'class': 'form-control'}, 'label': 'Valeur de la carte :'}) }}
+    {{ form_row(form.quantity, {'attr': {'class': 'form-control'}, 'label': 'Quantité :'}) }}
+    {{ form_row(form.picture, {'attr': {'class': 'form-control'}, 'label': 'Image :'}) }}
+    {{ form_row(form.description, {'attr': {'class': 'form-control'}, 'label': 'Résumé de la carte :'}) }}
+    {{ form_row(form.isOnSale, {'attr': {'class': 'form-check'}}) }}
+
+
+<button class="btn btn-success" type="submit">Soumettre</button>
+{{ form_end(form)}} 
+</div>
+{% endblock %}

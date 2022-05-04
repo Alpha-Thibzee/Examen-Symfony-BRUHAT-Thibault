@@ -2,7 +2,7 @@
 <title>Thibault | {% block title %} {% endblock %}</title>
 
 {% block stylesheet %}
-<link rel="stylesheet" href="assets/css/bootstrap.css">
+<link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
 {% endblock %}
 
 {% block javascripts %}{% endblock %}
@@ -14,7 +14,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
-        <a class="nav-link" href="#">Features</a>
+        <a class="nav-link" href="{{ path("all-card") }}">Voir toutes les cartes</a>
         <a class="nav-link" href="#">Pricing</a>
         <a class="nav-link" href="#">Disabled</a>
       </div>
