@@ -55,7 +55,9 @@ class CardController extends AbstractController
             
             try{
                 $em->flush();
+                $this->addFlash('success', 'Votre carte à bien été crée');
             }catch(Exception $e){
+                $this->addFlash('error', 'Votre carte n\'a pas été crée');
                 return $this->redirectToRoute('add-card');
             }
             return $this->redirectToRoute('all-card');
@@ -95,7 +97,13 @@ class CardController extends AbstractController
                 $avatarFileName = $fileUploader->upload($avatarFile);
                 $card->setPicture($avatarFileName);
             }
-            $em->flush();
+            try{
+                $em->flush();
+                $this->addFlash('success', 'Votre carte à bien été éditée');
+            }catch(Exception $e){
+                $this->addFlash('error', 'Votre carte n\'a pas été éditée');
+                return $this->redirectToRoute('edit-card/{id}');
+            }
             return $this->redirectToRoute('all-card');
         }
 
@@ -118,8 +126,10 @@ class CardController extends AbstractController
         $em->remove($card);
         try {
             $em->flush();
+            $this->addFlash('success', 'Votre carte à bien été supprimée');
         }catch(Exception $e) {
-
+            $this->addFlash('error', 'Votre carte n\'a pas été supprimée');
+            return $this->redirectToRoute('all-card');
         }
         
 

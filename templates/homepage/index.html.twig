@@ -14,9 +14,17 @@
 {% for message in app.flashes('success') %}
 
             <div class="alert alert-success text-center w-50">
-                Votre proposition d'offre à bien été envoyé
+                {{ message }}
             </div>
-            
+
+{% endfor %}
+
+{% for message in app.flashes('error') %}
+
+            <div class="alert alert-danger text-center w-50">
+                {{ message }}
+            </div>
+
 {% endfor %}
 
 </div>
