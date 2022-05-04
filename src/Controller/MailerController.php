@@ -21,7 +21,8 @@ class MailerController extends AbstractController
     public function index(CardRepository $card , Card $cards ,Request $request, TransportInterface $mailer, $id)
     {
         $card->findOneBy(['id' => $id]);
-        $card = $cards->getValue();
+        $value = $cards->getValue();
+        $name = $cards->getName();
         $form = $this->createForm(MailFormType::class);
 
         $form->handleRequest($request);
@@ -33,9 +34,9 @@ class MailerController extends AbstractController
             
             $message = (new Email())
                 ->from($contactFormData['email'])
-                ->to('your@mail.com')
-                ->subject('Nouvelle propositon d\'achat')
-                ->text('Sender : '.$contactFormData['email'].\PHP_EOL.
+                ->to('JérémieLeCollectionneur@batman.com')
+                ->subject('Nouvelle propositon d\'achat pour la carte '.$name.' d\'une valeur de '. $contactFormData['value'].'€')
+                ->text(
                     $contactFormData['message'],
                     'text/plain');
 
@@ -55,7 +56,8 @@ class MailerController extends AbstractController
 
 
         return $this->render('mailer/index.html.twig', [
-            'card' => $card,
+            'name' => $name,
+            'value' => $value,
             'form' => $form->createView()
         ]);
     }

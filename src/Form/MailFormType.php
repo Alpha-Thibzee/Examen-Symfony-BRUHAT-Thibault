@@ -18,7 +18,7 @@ class MailFormType extends AbstractType
             ->add('fullName',TextType::class, [
                 'label' => 'Nom et Prénom',
             ])
-            ->add('price', IntegerType::class, [
+            ->add('value', IntegerType::class, [
                 'label' => 'Prix proposé',
             ])
             ->add('email',EmailType::class, [

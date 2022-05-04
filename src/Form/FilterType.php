@@ -21,11 +21,12 @@ class FilterType extends AbstractType
                 'Croissant' => true,
                 'Décroissant' => false
             ],
+            'label' => 'Trié par prix : ',
             'mapped' => false,
             'attr' => ['class' => 'form-control'],
-            'required' => false
         ])
         ->add('send', SubmitType::class, [
+            'label' => "Envoyer",
             'attr' => ['class' => 'btn btn-primary w-100 mt-3   ']
         ])
         ;
