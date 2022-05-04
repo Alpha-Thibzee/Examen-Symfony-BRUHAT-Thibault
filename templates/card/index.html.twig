@@ -3,12 +3,16 @@
 {% block title %}Liste des cartes{% endblock %}
 
 {% block body %}
-
+<div class="container-fluid d-flex row align-items-center justify-content-center mt-3 mb-3">
+<div class="col-3">
 {{ form_start(filter) }}
         {{ form_widget(filter) }}
-    {{ form_end(filter) }}
+{{ form_end(filter) }}
+</div>
+</div>
 
 <div class="container-fluid d-flex row align-items-center justify-content-center mt-3 mb-3">
+
 {% for cards in card %}
     <div class="card col-3 mx-3 my-3 " style="width: 18rem;">
     <img src="{{  asset("/assets/card/" ~ cards.picture) }}" class="img-top" alt="">
@@ -28,6 +32,8 @@
                
             {% if app.user %}
             <a href="{{ path('view-one',{id:cards.id})}}" class="btn btn-primary">Voir la carte</a>
+            {% else %}
+                <a href="">Proposer une offre</a>
             {% endif %}
         </div>
 </div>

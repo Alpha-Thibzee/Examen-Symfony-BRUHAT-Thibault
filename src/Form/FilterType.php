@@ -26,7 +26,7 @@ class FilterType extends AbstractType
             'required' => false
         ])
         ->add('send', SubmitType::class, [
-            'attr' => ['class' => 'btn btn-primary m-4']
+            'attr' => ['class' => 'btn btn-primary w-100 mt-3   ']
         ])
         ;
     }
