@@ -3,11 +3,12 @@
 namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class MailFormType extends AbstractType
 {
@@ -16,6 +17,9 @@ class MailFormType extends AbstractType
         $builder
             ->add('fullName',TextType::class, [
                 'label' => 'Nom et Prénom',
+            ])
+            ->add('price', IntegerType::class, [
+                'label' => 'Prix proposé',
             ])
             ->add('email',EmailType::class, [
                 'label' => 'Votre email'
