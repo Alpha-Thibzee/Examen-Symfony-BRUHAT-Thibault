@@ -109,6 +109,9 @@ class CardController extends AbstractController
     #[Route('/delete-card/{id}', name: 'delete-card')]
     public function delete(Card $card, EntityManagerInterface $em): Response
     {
+
+        $avatar = $card->getPicture();
+        unlink("assets/card/".$avatar);
         $em->remove($card);
         try {
             $em->flush();
