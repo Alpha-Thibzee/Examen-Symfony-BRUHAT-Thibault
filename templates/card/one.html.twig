@@ -6,7 +6,7 @@
 
 <div class="container-fluid d-flex row align-items-center justify-content-center mt-3 mb-3">
 
-    <div class="card col-3 mx-3 my-3 " style="width: 18rem;">
+    <div class="card col-3 mx-3 my-3 " style="width: 25rem;height:65rem">
 
         <img src="{{  asset("/assets/card/" ~ card.picture) }}" class="img-top" alt="">
             <div class="card-body">
@@ -19,10 +19,12 @@
                     
 {% if card.isOnSale %}
 
-                    <p class="card-text">Disponible à la vente</p>
+                    <p class="card-text alert-success p-2 text-center">Disponible à la vente</p>
+
 {% else %}
 
-                    <p class="card-text">Indisponible à la vente</p>
+                    <p class="card-text alert-danger p-2 text-center">Indisponible à la vente</p>
+
 {% endif %}
                 
 {% if app.user %}
