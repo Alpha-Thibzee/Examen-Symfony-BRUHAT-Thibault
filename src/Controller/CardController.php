@@ -35,22 +35,19 @@ class CardController extends AbstractController
         ]);
     }
 
-    #[Route('/add-card', name: 'add-card')]
+    #[Route('/admin/add-card', name: 'add-card')]
         public function new(Request $request, EntityManagerInterface $em, Upload $fileUploader): Response
     {
         $card = new Card();
         $form = $this->createForm(CardType::class, $card);
         $form->handleRequest($request);
-        $card->setBuyAt(new \DateTimeImmutable("now"));
-        $card->setReleaseAt(new \DateTimeImmutable("now"));
 
         if($form->isSubmitted() && $form->isValid()){
-            if($card->getPicture() === null) {
-                $card->setPicture("1.png");
-            } else {
-                $avatarFile = $form->get("picture")->getData();
+            $avatarFile = $form->get("picture")->getData();
                 $avatarFileName = $fileUploader->upload($avatarFile) ;
                 $card->setPicture($avatarFileName);
+            if($card->getPicture() === null) {
+                $card->setPicture("NoAvailable.png");
             }
             $em->persist($card);
             
