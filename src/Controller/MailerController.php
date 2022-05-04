@@ -21,7 +21,7 @@ class MailerController extends AbstractController
     public function index(CardRepository $card , Card $cards ,Request $request, TransportInterface $mailer, $id)
     {
         $card->findOneBy(['id' => $id]);
-        $value = $cards->getValue();
+        $value = $cards->getValue()+1;
         $name = $cards->getName();
         $form = $this->createForm(MailFormType::class);
 

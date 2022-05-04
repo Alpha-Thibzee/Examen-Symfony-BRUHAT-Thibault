@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Card;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -20,6 +21,7 @@ class MailFormType extends AbstractType
             ])
             ->add('value', IntegerType::class, [
                 'label' => 'Prix proposé',
+                'attr' => ['min' => ""]
             ])
             ->add('email',EmailType::class, [
                 'label' => 'Votre email'

@@ -6,6 +6,8 @@
 
 <div class="container w-50">
 
+    <h1 class="text-center mt-3 mb-3">Inscrire une nouvelle carte</h1>
+
     {{ form_start(form) }}
 
         {{ form_row(form.name, {'attr': {'class': 'form-control'}, 'label': 'Nom de la carte :'}) }}
@@ -16,8 +18,10 @@
         {{ form_row(form.releaseAt, {'attr': {'class': 'form-control'}}) }}
         {{ form_row(form.description, {'attr': {'class': 'form-control'}, 'label': 'Résumé de la carte :'}) }}
         {{ form_row(form.isOnSale, {'attr': {'class': 'form-check'}}) }}
-
-        <button class="btn btn-success" type="submit">Soumettre</button>
+        
+        <div class="container d-flex align-items-center justify-content-center">
+            <button class="btn btn-success" type="submit">Soumettre</button>
+        </div>
 
     {{ form_end(form)}} 
 

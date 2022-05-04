@@ -38,7 +38,8 @@ class CardType extends AbstractType
             ])
             ->add('isOnSale' , CheckboxType::class , [
                 'required' => false,
-                'data_class' => null
+                'data_class' => null,
+                'label'=> 'Est-il à vendre ? :',
             ])
             ->add('quantity' , IntegerType::class , [
                 'attr' => ['min' => "1"],
@@ -60,9 +61,11 @@ class CardType extends AbstractType
             ])
             ->add('buyAt', DateTimeType::class, [   
                 'input'=> 'datetime_immutable',
+                'label'=> 'Acheté le :'
             ])
             ->add('releaseAt', DateTimeType::class, [
                 'input'=> 'datetime_immutable',
+                'label'=> 'Sortie le :'
             ])
             ->add('description', TextareaType::class, [
                 'constraints' => [
