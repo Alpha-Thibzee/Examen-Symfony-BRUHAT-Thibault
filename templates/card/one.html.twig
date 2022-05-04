@@ -22,7 +22,8 @@
                 {% endif %}
                
             {% if app.user %}
-            <a href="{{ path('edit-card',{id:card.id}) }}" class="btn btn-danger">Modifer</a>
+            <a href="{{ path('edit-card',{id:card.id}) }}" class="btn btn-warning">Modifer</a>
+            <a href="{{ path('delete-card',{id:card.id}) }}" class="btn btn-danger">Supprimer</a>
             {% endif %}
         </div>
 </div>

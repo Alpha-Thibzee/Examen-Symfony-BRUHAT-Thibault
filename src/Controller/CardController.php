@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Card;
 use App\Form\CardType;
 use App\Service\Upload;
+use App\Form\FilterType;
 use App\Repository\CardRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,12 +17,21 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class CardController extends AbstractController
 {
     #[Route('/all-card', name: 'all-card')]
-    public function viewAll(CardRepository $repo): Response
+    public function viewAll(CardRepository $repo, Request $request): Response
     {
         $card = $repo->findAll();
+        $filter = $this->createForm(FilterType::class);
+        $filter->handleRequest($request);
+
+        if($filter->isSubmitted() && $filter->isValid()){
+            $order = ($filter['valueOrder']->getData()? 'ASC' : 'DESC');
+            $card = $repo->filterArticle($order);
+        }
+
 
         return $this->render('card/index.html.twig' , [
-            "card" => $card
+            "card" => $card,
+            'filter' => $filter->createView()
         ]);
     }
 
@@ -68,14 +78,24 @@ class CardController extends AbstractController
     }
 
     #[Route('/edit-card/{id}', name: 'edit-card')]
-    public function edit(EntityManagerInterface $em, Card $card, Request $request): Response
+    public function edit(EntityManagerInterface $em, Card $card, Request $request , Upload $fileUploader): Response
     {
+        $oldAvatar = $card->getPicture();
+
         $form = $this->createForm(CardType::class, $card);
         $form->handleRequest($request);
        
 
         if($form->isSubmitted() && $form->isValid()){
 
+            $avatarFile = $form->get('picture')->getData();
+            if ($avatarFile) {
+                if($avatarFile !== 'default.png'){
+                    $fileUploader->fileDelete($oldAvatar);
+                }
+                $avatarFileName = $fileUploader->upload($avatarFile);
+                $card->setPicture($avatarFileName);
+            }
             $em->flush();
             return $this->redirectToRoute('all-card');
         }
@@ -85,6 +105,20 @@ class CardController extends AbstractController
         ]);
 
 
+    }
+
+    #[Route('/delete-card/{id}', name: 'delete-card')]
+    public function delete(Card $card, EntityManagerInterface $em): Response
+    {
+        $em->remove($card);
+        try {
+            $em->flush();
+        }catch(Exception $e) {
+
+        }
+        
+
+        return $this->redirectToRoute('all-card');
     }
     }
     

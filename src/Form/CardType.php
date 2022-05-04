@@ -47,6 +47,7 @@ class CardType extends AbstractType
             ])
             ->add('picture' , FileType::class , [
                 "required" => false,
+                'mapped' => false,
                 'data_class' => null,
                 "constraints" => [
                         new Image([
