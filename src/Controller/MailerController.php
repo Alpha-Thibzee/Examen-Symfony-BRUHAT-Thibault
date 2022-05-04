@@ -34,7 +34,7 @@ class MailerController extends AbstractController
             
             $message = (new Email())
                 ->from($contactFormData['email'])
-                ->to('JérémieLeCollectionneur@batman.com')
+                ->to('alexis@carte-collection.com')
                 ->subject('Nouvelle propositon d\'achat pour la carte '.$name.' d\'une valeur de '. $contactFormData['value'].'€')
                 ->text(
                     $contactFormData['message'],
