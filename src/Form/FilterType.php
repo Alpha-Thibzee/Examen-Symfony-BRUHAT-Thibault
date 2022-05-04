@@ -26,7 +26,7 @@ class FilterType extends AbstractType
             'attr' => ['class' => 'form-control'],
         ])
         ->add('send', SubmitType::class, [
-            'label' => "Envoyer",
+            'label' => "Filtrer",
             'attr' => ['class' => 'btn btn-primary w-100 mt-3   ']
         ])
         ;
