@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des cartes{% endblock %}
+
+{% block body %}
+
+{% for cards in card %}
+    <div class="card" style="width: 18rem;">
+    <img src="{{  asset("/assets/card/" ~ cards.picture) }}" class="img-top" alt="">
+        <div class="card-body">
+            <h5 class="card-title">{{ cards.name }}</h5>
+            <p class="card-text">Résumé : {{ cards.description }}</p>
+                <p class="card-text">Quantité : {{ cards.quantity }}</p>
+                <p class="card-text">Acheté le : {{ cards.buyAt|date('d/m/Y') }}</p>
+                <p class="card-text">Sortie le : {{ cards.releaseAt|date('d/m/Y') }}</p>
+                
+            <a href="#" class="btn btn-primary">Voir la carte</a>
+        </div>
+</div>
+{% endfor %}
+
+{% endblock %}
