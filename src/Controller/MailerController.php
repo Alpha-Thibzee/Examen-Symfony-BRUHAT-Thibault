@@ -53,14 +53,14 @@ class MailerController extends AbstractController
 
                     try {
                         $mailer->send($message);
-                        $this->addFlash('success', 'Votre proposition d\'offre à bien été envoyé');
+                        $this->addFlash('success', 'Votre proposition d\'offre pour la carte "'.$name.'" à bien été envoyé');
                     } catch (TransportExceptionInterface $e) {
-                        $this->addFlash('error', 'Votre proposition d\'offre n\'a pas été envoyé');
+                        $this->addFlash('error', 'Votre proposition d\'offre pour la carte "'.$name.'" n\'a pas été envoyé');
                         return $this->redirectToRoute('homepage');
                     }
 
 
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('all-card');
         }
         
         return $this->render('mailer/index.html.twig', [

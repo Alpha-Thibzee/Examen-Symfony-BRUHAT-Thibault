@@ -2,6 +2,7 @@
 
 namespace App\Security;
 
+
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -50,7 +51,7 @@ class SecurityAuthenticator extends AbstractLoginFormAuthenticator
         }
 
         // For example:
-         return new RedirectResponse($this->urlGenerator->generate('homepage'));
+         return new RedirectResponse($this->urlGenerator->generate('all-card'));
         // throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 
