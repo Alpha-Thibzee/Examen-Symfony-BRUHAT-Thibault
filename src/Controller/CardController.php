@@ -24,8 +24,17 @@ class CardController extends AbstractController
         $filter->handleRequest($request);
 
         if($filter->isSubmitted() && $filter->isValid()){
+
+            if($filter['valueOrder']->getData() === null){
+
+                return $this->redirectToRoute('all-card');
+
+            } else {
+
             $order = ($filter['valueOrder']->getData()? 'ASC' : 'DESC');
             $card = $repo->filterArticle($order);
+            
+        }
         }
 
 

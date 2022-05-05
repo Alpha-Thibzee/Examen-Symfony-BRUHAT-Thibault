@@ -18,6 +18,7 @@ class FilterType extends AbstractType
         $builder
         ->add('valueOrder', ChoiceType::class, [
             'choices' => [
+                'Par défaut' => null,
                 'Croissant' => true,
                 'Décroissant' => false
             ],
@@ -27,7 +28,7 @@ class FilterType extends AbstractType
         ])
         ->add('send', SubmitType::class, [
             'label' => "Filtrer",
-            'attr' => ['class' => 'btn btn-primary w-100 mt-3   ']
+            'attr' => ['class' => 'btn btn-primary w-100 mt-3']
         ])
         ;
     }
