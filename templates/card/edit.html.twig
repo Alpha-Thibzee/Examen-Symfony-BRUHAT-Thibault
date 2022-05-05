@@ -4,9 +4,9 @@
 
 {% block body %}
 
-    <div class="container w-50">
+    <div class="container w-50 user-select-none">
 
-    <h1 class="text-center mt-3 mb-3">Modifer une carte</h1>
+    <h1 class="text-center mt-3 mb-3 user-select-none ">Modifer une carte</h1>
 
     {{ form_start(form) }}
         {{ form_row(form.name, {'attr': {'class': 'form-control'}, 'label': 'Nom de la carte :'}) }}

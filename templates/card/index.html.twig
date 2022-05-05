@@ -4,13 +4,13 @@
 
 {% block body %}
 
-<h1 class="text-center mt-3">Liste des cartes</h1>
+<h1 class="text-center mt-3 user-select-none">Liste des cartes</h1>
 
-<div class="container-fluid d-flex align-items-center justify-content-center mt-3 mb-3">
+<div class="container-fluid d-flex align-items-center justify-content-center mt-3 mb-3 user-select-none">
 
 {% for message in app.flashes('success') %}
 
-            <div class="alert alert-success text-center w-50">
+            <div class="alert alert-success text-center w-50 user-select-none">
                 {{ message }}
             </div>
 
@@ -18,7 +18,7 @@
 
 {% for message in app.flashes('error') %}
 
-            <div class="alert alert-danger text-center w-50">
+            <div class="alert alert-danger text-center w-50 user-select-none">
                 {{ message }}
             </div>
 
@@ -26,7 +26,7 @@
 
 </div>
 
-<div class="container-fluid d-flex row align-items-center justify-content-center mt-3 mb-3 m-0 p-0">
+<div class="container-fluid user-select-none d-flex row align-items-center justify-content-center mt-3 mb-3 m-0 p-0">
 
     <div class="col-3">
 
@@ -42,9 +42,9 @@
 
 {% for cards in card %}
 
-    <div class="card col-3 mx-3 my-3 pt-3 pb-3 " style="width: 25rem;">
-        <img src="{{  asset("/assets/card/" ~ cards.picture) }}" class="img-top" alt="">
-            <div class="card-body">
+    <div class="card col-3 mx-3 my-3 pt-3 pb-3 user-select-none " style="width: 25rem;">
+        <img src="{{  asset("/assets/card/" ~ cards.picture) }}" class="img-top user-select-none" alt="">
+            <div class="card-body user-select-none">
                 <h3 class="card-title">{{ cards.name }}</h3>
                 <h5>Prix : {{ cards.value }}€</h5>
                     <p class="card-text"><h6>Résumé :</h6> {{ cards.description }}</p>

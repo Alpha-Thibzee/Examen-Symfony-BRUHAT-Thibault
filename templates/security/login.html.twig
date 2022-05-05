@@ -4,8 +4,8 @@
 
 {% block body %}
 
-<div class="container">
-    <form method="post" class="w-50 mx-auto mt-5">
+<div class="container user-select-none ">
+    <form method="post" class="w-50 mx-auto mt-5 user-select-none">
     
         {% if error %}
             <div class="alert alert-danger text-center">{{ error.messageKey|trans(error.messageData, 'security') }}</div>

@@ -9,13 +9,13 @@
 {% endblock %}
 
 {% block body %}
-<div class="position-absolute mx-auto homepage container-fluid d-flex flex-column align-items-center justify-content-center mt-5">
+<div class="position-absolute user-select-none mx-auto homepage container-fluid d-flex flex-column align-items-center justify-content-center mt-5">
 <h1 class="text-center mt-5">Bienvenue</h1>
 <h3 class="text-center">sur le site de collection de cartes d'Alexis</h3>
 
 {% for message in app.flashes('success') %}
 
-            <div class="alert alert-success text-center w-50">
+            <div class="alert alert-success text-center w-50 user-select-none">
                 {{ message }}
             </div>
 
@@ -23,7 +23,7 @@
 
 {% for message in app.flashes('error') %}
 
-            <div class="alert alert-danger text-center w-50">
+            <div class="alert alert-danger text-center w-50 user-select-none">
                 {{ message }}
             </div>
 
