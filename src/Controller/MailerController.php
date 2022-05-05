@@ -8,6 +8,7 @@ use App\Form\MailFormType;
 use Symfony\Component\Mime\Email;
 use App\Repository\CardRepository;
 use Symfony\Component\Mailer\Transport;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Routing\Annotation\Route;
@@ -32,13 +33,21 @@ class MailerController extends AbstractController
 
             $contactFormData = $form->getData();
             
-            $message = (new Email())
+            $message = (new TemplatedEmail())
                 ->from($contactFormData['email'])
                 ->to('alexis@carte-collection.com')
                 ->subject('Nouvelle propositon d\'achat pour la carte '.$name.' d\'une valeur de '. $contactFormData['value'].'€')
                 ->text(
                     $contactFormData['message'],
-                    'text/plain');
+                    'text/plain')
+                ->htmlTemplate('mailer/reception.html.twig')
+
+                ->context([
+                    'mail' => $contactFormData["email"],
+                    'name' => $contactFormData["fullName"],
+                    'value' => $contactFormData["value"],
+                    'message' => $contactFormData["message"]
+                ]);
 
                     try {
                         $mailer->send($message);
