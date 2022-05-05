@@ -24,6 +24,7 @@ class MailerController extends AbstractController
         $card->findOneBy(['id' => $id]);
         $value = $cards->getValue()+1;
         $name = $cards->getName();
+        $picture = $cards->getPicture();
         $form = $this->createForm(MailFormType::class);
 
         $form->handleRequest($request);
@@ -41,13 +42,13 @@ class MailerController extends AbstractController
                     $contactFormData['message'],
                     'text/plain')
                 ->htmlTemplate('mailer/reception.html.twig')
-
                 ->context([
                     'mail' => $contactFormData["email"],
                     'name' => $contactFormData["fullName"],
                     'value' => $contactFormData["value"],
                     'message' => $contactFormData["message"],
-                    'cardName' => $name
+                    'cardName' => $name,
+                    'picture' => $picture
                 ]);
 
                     try {

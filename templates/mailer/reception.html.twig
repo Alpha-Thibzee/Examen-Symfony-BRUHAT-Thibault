@@ -19,6 +19,17 @@
         p {
             text-align:center;
         }
+        img {
+            height : 150px;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content:center;
+            width: 100%;
+            margin-right: auto;
+            margin-left: auto;
+        }
     </style>
 
 <h1>Nouvelle offre d'achat de {{ name }} !</h1>
@@ -27,8 +38,14 @@
 
 <h3>Prix proposé : {{ value }}€ pour la carte {{ cardName }}</h3>
 
+<div class="container">
+<img  src="{{ absolute_url(asset('assets/card/' ~ picture)) }}">
+</div>
+
 <h4 class="messageTitle">Message : </h4>
 <p>"{{ message }}"</p>
+
+
 
 {% endapply %}
 {% endblock %}

@@ -4,7 +4,7 @@
 
 {% block body %}
 
-<h1 class="text-center">Liste des cartes</h1>
+<h1 class="text-center mt-3">Liste des cartes</h1>
 
 <div class="container-fluid d-flex align-items-center justify-content-center mt-3 mb-3">
 
@@ -26,7 +26,7 @@
 
 </div>
 
-<div class="container-fluid d-flex row align-items-center justify-content-center mt-3 mb-3">
+<div class="container-fluid d-flex row align-items-center justify-content-center mt-3 mb-3 m-0 p-0">
 
     <div class="col-3">
 
@@ -42,7 +42,7 @@
 
 {% for cards in card %}
 
-    <div class="card col-3 mx-3 my-3 " style="width: 25rem;height:65rem">
+    <div class="card col-3 mx-3 my-3 pt-3 pb-3 " style="width: 25rem;">
         <img src="{{  asset("/assets/card/" ~ cards.picture) }}" class="img-top" alt="">
             <div class="card-body">
                 <h3 class="card-title">{{ cards.name }}</h3>
