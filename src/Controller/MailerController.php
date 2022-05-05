@@ -46,7 +46,8 @@ class MailerController extends AbstractController
                     'mail' => $contactFormData["email"],
                     'name' => $contactFormData["fullName"],
                     'value' => $contactFormData["value"],
-                    'message' => $contactFormData["message"]
+                    'message' => $contactFormData["message"],
+                    'cardName' => $name
                 ]);
 
                     try {
