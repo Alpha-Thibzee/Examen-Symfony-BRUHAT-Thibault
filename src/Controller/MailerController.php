@@ -25,10 +25,15 @@ class MailerController extends AbstractController
         $value = $cards->getValue()+1;
         $name = $cards->getName();
         $picture = $cards->getPicture();
+        $isOnSale = $cards->getIsOnSale();
         $form = $this->createForm(MailFormType::class);
 
         $form->handleRequest($request);
 
+        if($isOnSale === false){
+            $this->addFlash('error', 'La carte '.$name.' n\'est pas à vendre !!!');
+            return $this->redirectToRoute('homepage');
+        }
 
         if($form->isSubmitted() && $form->isValid()) {
 
