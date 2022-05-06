@@ -51,6 +51,11 @@ class MailerController extends AbstractController
                     'picture' => $picture
                 ]);
 
+                    if($contactFormData["value"] != $value){
+                        $this->addFlash('error', 'Votre proposition d\'offre pour la carte "'.$name.'" n\'a pas été envoyé, veuillez mettre un prix supérieur au prix de la carte');
+                        return $this->redirectToRoute('homepage');
+                    }
+
                     try {
                         $mailer->send($message);
                         $this->addFlash('success', 'Votre proposition d\'offre pour la carte "'.$name.'" à bien été envoyé');
